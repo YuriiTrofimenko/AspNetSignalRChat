@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div id="body">
+        <section class="content-wrapper main-content clear-fix">
+
+            <div id="console" data-bind="template: {name: 'chatMessageTemplate', foreach: chatMessages, afterAdd: resizeChat}">
+            </div>
+
+            <label for="username">Enter username to start chatting</label>
+            <input type="text" id="username" data-bind="value: chatUsername" />
+
+            <div id="chatControl" value="send" data-bind="visible: chatUsername().length > 0">
+                <textarea type="text" id="push" data-bind="value: newMessage.text"></textarea>
+                <button id="pushbtn">Send</button>
+            </div>
+
+            <script type="text/html" id="chatMessageTemplate">
+                <p>
+                    <small data-bind="text: dt"></small><br />
+                    <strong data-bind="text: username"></strong>: <i data-bind="text: text"></i>
+                </p>
+            </script>
+
+        </section>
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery-3.2.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/knockout-3.4.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/knockout.mapping-latest.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/custom.js")" type="text/javascript"></script>
+</body>
+</html>
